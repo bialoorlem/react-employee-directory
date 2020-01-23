@@ -1,24 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import api from '../api/api';
 
 
 
-function Table() {
+export default function Table() {
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    axios.get("url")
+    .then(res=>setData(res))
+
+
+  }, []
+);
+
   return (
    
 <table>
 
-<thead>
 <tr>
+<th>
 
+Thing
+
+</th>
+</tr>
+
+
+
+{data.map}
 
 <th>
 </th>
 
 
-</tr>
-
-
-</thead>
 </table>
       
     
