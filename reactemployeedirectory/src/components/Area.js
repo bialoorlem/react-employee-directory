@@ -1,41 +1,24 @@
+import React, { Component, useState, useEffect } from "react";
+import axios from "axios";
 
-import React, { Component } from "react";
 
-class TableExp extends Component {
-  constructor() {
-    super();
 
-    this.state = {
-      tableData: [
-        {
-          resourceID: "",
-          resourceType: "",
-          tenantName: "",
-          dealerID: "",
-          status: "",
-          logFilePath: "",
-          supportPerson: "",
-          lastUpdatedTime: ""
-        }
-      ]
-    };
-  }
+function Table() {
+  // Declare a new state variable, which we'll call "count"
+  const [eeInfo, setEEInfo] = useState([]);
+  
+useEffect(() =>{
+  axios.get("http://private-9ff5e-stackoverflow.apiary-mock.com/questions")
 
-  componentDidMount() {
-    axios
-      .get("http://private-9ff5e-stackoverflow.apiary-mock.com/questions", {
-        responseType: "json"
-      })
-      .then(response => {
-        this.setState({ tableData: response.data });
-      });
-  }
+  .then((res)=>{
+    setEEInfo(res.data)
+  })
 
-  render() {
-    const { tableData } = this.state;
+}, [])
 
-    return (
-      <ReactTable.default
+  return (
+    <div>
+<ReactTable.default
         data={tableData}
         columns={[
           {
@@ -81,10 +64,8 @@ class TableExp extends Component {
     );
   }
 }
+    </div>
+  );
+}
 
-ReactDOM.render(
-  <div>
-    <TableExp />
-  </div>,
-  document.getElementById("root")
-);
+export default Table
