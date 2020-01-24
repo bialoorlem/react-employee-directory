@@ -1,29 +1,90 @@
-import React from 'react';
 
-function ResultList(props) {
-  return (
-    <ul className="list-group">
+import React, { Component } from "react";
 
-      {props.results.map(result => (
+class TableExp extends Component {
+  constructor() {
+    super();
 
-          
-        <li className="list-group-item" key={result.id}>
-          <img alt={result.title} className="img-fluid" src={result.images.original.url} />
-        </li>
-      ))}
-    </ul>
-  );
+    this.state = {
+      tableData: [
+        {
+          resourceID: "",
+          resourceType: "",
+          tenantName: "",
+          dealerID: "",
+          status: "",
+          logFilePath: "",
+          supportPerson: "",
+          lastUpdatedTime: ""
+        }
+      ]
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://private-9ff5e-stackoverflow.apiary-mock.com/questions", {
+        responseType: "json"
+      })
+      .then(response => {
+        this.setState({ tableData: response.data });
+      });
+  }
+
+  render() {
+    const { tableData } = this.state;
+
+    return (
+      <ReactTable.default
+        data={tableData}
+        columns={[
+          {
+            Header: "Details",
+            columns: [
+              {
+                Header: "Tenant Name",
+                accessor: "tenantName"
+              },
+              {
+                Header: "Support Engineer",
+                id: "supportEngineer",
+                accessor: d => d.supportPerson
+              }
+            ]
+          },
+          {
+            Header: "Info",
+            columns: [
+              {
+                Header: "Dealer ID",
+                accessor: "dealerID"
+              },
+              {
+                Header: "Status",
+                accessor: "status"
+              }
+            ]
+          },
+          {
+            Header: "Logs",
+            columns: [
+              {
+                Header: "File Path",
+                accessor: "logFilePath"
+              }
+            ]
+          }
+        ]}
+        defaultPageSize={10}
+        className="-striped -highlight"
+      />
+    );
+  }
 }
 
-//Jquery Documentation pulled from https://randomuser.me/documentation#howto
-
-//
-    //$.ajax({
-//   url: 'https://randomuser.me/api/',
-//   dataType: 'json',
-//   success: function(data) {
-//     console.log(data);
-//   }
-// });
-
-export default ResultList;
+ReactDOM.render(
+  <div>
+    <TableExp />
+  </div>,
+  document.getElementById("root")
+);

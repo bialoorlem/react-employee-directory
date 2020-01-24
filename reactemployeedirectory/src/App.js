@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
+import Example from './components/Example';
 
 import { Form, Button, FormGroup, FormControl, ControlLabel, Navbar, Nav } from "react-bootstrap";
 
@@ -22,6 +23,13 @@ function App() {
       <Button variant="outline-info">Search</Button>
     </Form>
   </Navbar>
+
+
+  <Example/>
+
+
+
+
       <Footer/>
     </div>
   );
