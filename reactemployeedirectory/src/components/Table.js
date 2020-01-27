@@ -9,7 +9,7 @@ export default function Table() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    axios.get("url")
+    axios.get("https://randomuser.me/api/?results=5")
     .then(res=>setData(res))
 
 
