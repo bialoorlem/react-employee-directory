@@ -1,7 +1,7 @@
 // Pulled from Jake O'Toole's repo
 
 
-const axios = require("axios")
+const axios = require("axios");
 
 function Main(){
 
@@ -17,3 +17,5 @@ function Main(){
     getRandomEmployees()
 }
 Main()
+
+export default Main

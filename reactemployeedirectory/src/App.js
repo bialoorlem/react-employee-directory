@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import Footer from './components/Footer';
-import Example from './components/Example';
+import Table from './components/Table';
+import Api from './components/Api';
 
 import { Form, Button, FormGroup, FormControl, ControlLabel, Navbar, Nav } from "react-bootstrap";
 
@@ -25,7 +26,7 @@ function App() {
   </Navbar>
 
 
-  <Example/>
+
 
 
 
