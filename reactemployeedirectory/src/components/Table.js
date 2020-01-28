@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 // import api from "./Api";
 import axios from "axios";
 
+
 export default function Table() {
   const [data, setData] = useState([]);
   const [employees, setEmployees] = useState([]);
-
+  
   
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function Table() {
                     <td>UID</td>
                     <td>Gender</td>
                     <td>E-mail</td>
-                    <td >Age</td>
+                    <td><button onClick={() => sortAge()} />Age</td>
                 </tr>
             </thead>
             <tbody>
@@ -59,17 +60,21 @@ export default function Table() {
     )
 }
 
-//   function sortName(){
+//Referred to Jake's GitHub but modified for my own app
 
-//       name.sort(function(a,b){
-//           if(employee.name.first < employee.name.first){
-//               return -1;
-//           }else{
-//               return 1;
-//           }
-//       })
+  function sortAge(){
+
+      const {name, age} = this.props;
+
+      age.sort(function(a,b){
+          if(a.dob.age < b.dob.age){
+              return -1;
+          }else{
+              return 1;
+          }
+      })
         
-//   }
+  }
 
 
 //Results objects found through https://randomuser.me/documentation#howto
