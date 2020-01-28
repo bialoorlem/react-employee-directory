@@ -32,7 +32,9 @@ export default function Table() {
         <table class="table">
             <thead>
                 <tr>
-                    <td>First Name</td>
+                    <td><button onClick={() =>{ 
+                        console.log("name array", data)
+                        setData(sortName(data))}} />First Name</td>
                     <td>Last Name</td>
                     <td>UID</td>
                     <td>Gender</td>
@@ -70,6 +72,22 @@ export default function Table() {
 
       data.sort(function(a,b){
           if(a.dob.age < b.dob.age){
+              return -1;
+          }else{
+              return 1;
+          }
+      });
+      console.log(data)
+       return [...data]
+        
+  }
+
+    function sortName(data){
+
+      
+
+      data.sort(function(a,b){
+          if(a.name.first < b.name.first){
               return -1;
           }else{
               return 1;
