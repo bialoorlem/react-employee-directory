@@ -14,6 +14,8 @@ export default function Table() {
     //{data.map} will need this to refer to objects in the API. Will need to look at the object structure.
   }, []);
   console.log("data >>>>> ", data);
+
+  //Pulled from Jake's GitHub and modified
   
     return (
         <table class="table">
