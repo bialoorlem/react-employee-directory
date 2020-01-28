@@ -4,6 +4,9 @@ import axios from "axios";
 
 export default function Table() {
   const [data, setData] = useState([]);
+  const [employees, setEmployees] = useState([]);
+
+  
 
   useEffect(() => {
     axios.get("https://randomuser.me/api/?results=5").then(res => {
@@ -15,9 +18,16 @@ export default function Table() {
   }, []);
   console.log("data >>>>> ", data);
 
+
+
+  
+  
+//<button onClick={() => data.sortBy('first')} /> I will need to do something with this sort function
   //Pulled from Jake's GitHub and modified
   
     return (
+
+        
         <table class="table">
             <thead>
                 <tr>
@@ -48,6 +58,19 @@ export default function Table() {
         </table>
     )
 }
+
+//   function sortName(){
+
+//       name.sort(function(a,b){
+//           if(employee.name.first < employee.name.first){
+//               return -1;
+//           }else{
+//               return 1;
+//           }
+//       })
+        
+//   }
+
 
 //Results objects found through https://randomuser.me/documentation#howto
 
