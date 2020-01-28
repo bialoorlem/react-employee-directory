@@ -13,44 +13,38 @@ export default function Table() {
 
     //{data.map} will need this to refer to objects in the API. Will need to look at the object structure.
   }, []);
-console.log("data >>>>> ", data)
-  return (
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-        <tr>
-          {data.map(d => {
-            return <div>{JSON.stringify(d)}</div>;
-          })}
-        </tr>
-      </tbody>
-    </table>
-  );
+  console.log("data >>>>> ", data);
+  
+    return (
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>UID</td>
+                    <td>Gender</td>
+                    <td>E-mail</td>
+                    <td >Age</td>
+                </tr>
+            </thead>
+            <tbody>
+                {data.map(employee => {
+                    
+                    return (
+                        <tr key={employee.login.uuid}>
+                            <td>{employee.name.first}</td>
+                            <td>{employee.name.last}</td>
+                            <td>{employee.login.uuid}</td>
+                            <td>{employee.gender}</td>
+                            <td>{employee.email}</td>
+                            <td>{employee.dob.age}</td>
+                        </tr>
+                    )
+                }
+                )}
+            </tbody>
+        </table>
+    )
 }
 
 //Results objects found through https://randomuser.me/documentation#howto
