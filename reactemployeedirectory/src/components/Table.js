@@ -37,7 +37,9 @@ export default function Table() {
                     <td>UID</td>
                     <td>Gender</td>
                     <td>E-mail</td>
-                    <td><button onClick={() => sortAge()} />Age</td>
+                    <td><button onClick={() =>{ 
+                        console.log("first array", data)
+                        setData(sortAge(data))}} />Age</td>
                 </tr>
             </thead>
             <tbody>
@@ -62,17 +64,19 @@ export default function Table() {
 
 //Referred to Jake's GitHub but modified for my own app
 
-  function sortAge(){
+  function sortAge(data){
 
-      const {name, age} = this.props;
+      
 
-      age.sort(function(a,b){
+      data.sort(function(a,b){
           if(a.dob.age < b.dob.age){
               return -1;
           }else{
               return 1;
           }
-      })
+      });
+      console.log(data)
+       return [...data]
         
   }
 
