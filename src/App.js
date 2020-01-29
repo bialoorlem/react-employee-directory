@@ -1,35 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import Footer from './components/Footer';
-import Table from './components/Table';
-// import Api from './components/Api';
+import React from "react";
+import logo from "./logo.svg";
+import Footer from "./components/Footer";
+import Table from "./components/Table";
 
-import { Form, Button, FormGroup, FormControl, ControlLabel, Navbar, Nav } from "react-bootstrap";
 
-import './App.css';
+import {
+  Form,
+  Button,
+  FormGroup,
+  FormControl,
+  ControlLabel,
+  Navbar,
+  Nav
+} from "react-bootstrap";
 
+import "./App.css";
 
 function App() {
+  const [data, setData] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState([]);
+  const handleChange = event => {
+    setData(event.target.value);
+  };
   return (
     <div className="App">
-    <Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#home">Welcome to the Employee Directory</Navbar.Brand>
-    <Nav className="mr-auto">
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="#home">
+          Welcome to the Employee Directory
+        </Navbar.Brand>
+        <Nav className="mr-auto" />
+      </Navbar>
 
-    </Nav>
-    <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-info">Search</Button>
-    </Form>
-  </Navbar>
+      <div className="App">
+        <input
+          type="text"
+          placeholder="Search"
+          value={data}
+          onChange={handleChange}
+        />
+        <ul>{searchResults.map(item => <li>{item}</li>)}</ul>
+      </div>
 
+      <Table />
 
-<Table />
-
-
-
-
-      <Footer/>
+      <Footer />
     </div>
   );
 }

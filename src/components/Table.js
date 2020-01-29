@@ -5,7 +5,7 @@ import App from '../App';
 
 export default function Table() {
   const [data, setData] = useState([]);
-  const [employees, setEmployees] = useState([]);
+
   
 
 
@@ -101,17 +101,7 @@ export default function Table() {
         
   }
 
-      function filterOver18(data) {
-    const filteredArray = [];
-    for (let i = 0; i < data.length; i++) {
-      const employee = data[i];
-      if (employee.dob.age > 17) {
-        filteredArray.push(employee);
-      }
-    }
-    return [...filteredArray]
-    // setEmployees(filteredArray);
-  }
+
 
 //   function filterName(data){
 
