@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-// import api from "./Api";
 import axios from "axios";
+import App from '../App';
 
 
 export default function Table() {
   const [data, setData] = useState([]);
   const [employees, setEmployees] = useState([]);
   
-  
+
 
   useEffect(() => {
     axios.get("https://randomuser.me/api/?results=5").then(res => {
@@ -42,8 +42,10 @@ export default function Table() {
                     <td><button onClick={() =>{ 
                         console.log("first array", data)
                         setData(sortAge(data))}} />Age</td>
+                    
                 </tr>
             </thead>
+
             <tbody>
                 {data.map(employee => {
                     
@@ -60,6 +62,7 @@ export default function Table() {
                 }
                 )}
             </tbody>
+            
         </table>
     )
 }
@@ -98,8 +101,30 @@ export default function Table() {
         
   }
 
+      function filterOver18(data) {
+    const filteredArray = [];
+    for (let i = 0; i < data.length; i++) {
+      const employee = data[i];
+      if (employee.dob.age > 17) {
+        filteredArray.push(employee);
+      }
+    }
+    return [...filteredArray]
+    // setEmployees(filteredArray);
+  }
+
 //   function filterName(data){
+
+//       const filterArray = [];
+
+//       for (let i = 0; i < data.length; i++){
+
+//           const employeeName = data[i];
+
+//           if (employee.name.first)
+//       }
 
 //       data.filter()
 
 //   }
+
