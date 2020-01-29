@@ -16,6 +16,10 @@ import {
 
 import "./App.css";
 
+//Pulled from https://dev.to/asimdahall/simple-search-form-in-react-using-hooks-42pg
+
+//Also pulled from https://codesandbox.io/s/practical-nightingale-m2b5n
+
 function App() {
   const [data, setData] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
